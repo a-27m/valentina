@@ -1,16 +1,17 @@
 name: Windows build
 
 on:
-  push:
-    branches:
-      - 'master'
-      - 'develop'
-    tags:
-      - 'v*'
-  pull_request:
-    branches:
-      - 'master'
-      - 'develop'
+  # push:
+  #   branches:
+  #     - 'master'
+  #     - 'develop'
+  #   tags:
+  #     - 'v*'
+  # pull_request:
+  #   branches:
+  #     - 'master'
+  #     - 'develop'
+  workflow_dispatch:
 
 defaults:
   run:
@@ -230,6 +231,7 @@ jobs:
         run: ./scripts/appveyor-deploy.ps1
   legacy_build:
     name: Windows Qt ${{ matrix.qt.install }} (GCC ${{ matrix.qt.build_arch }})
+    if: false
     runs-on: windows-latest
 
     strategy:
